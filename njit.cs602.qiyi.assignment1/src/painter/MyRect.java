@@ -1,3 +1,5 @@
+package painter;
+
 // GCS Exercise 10.2 Solution: MyRect.java
 // Declaration of class MyRect.
 import java.awt.Color;

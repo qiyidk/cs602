@@ -1,3 +1,5 @@
+package painter;
+
 // GCS Exercise 14.17 Solution: DrawPanel.java
 // JPanel that allows the user to draw shapes with the mouse. 
 import java.awt.Color;

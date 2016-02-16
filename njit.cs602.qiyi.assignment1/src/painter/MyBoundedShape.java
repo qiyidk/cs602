@@ -1,3 +1,5 @@
+package painter;
+
 // GCS Exercise 10.2 Solution: MyBoundedShape.java
 // Declaration of class MyBoundedShape.
 import java.awt.Color;

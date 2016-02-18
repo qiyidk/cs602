@@ -10,7 +10,7 @@ public class GradeBook
    // constructor
    public GradeBook(String name, int[] grades)
    {
-      this.courseName = courseName;
+      this.courseName = name;
       this.grades = grades; 
    } 
 

@@ -41,8 +41,8 @@ public class DiceRolling {
     
     private void outputBarChart(int[] stat, int times){
         int max = 0;
-        for (int n : stat) if (n > max) max = n;
-        int sections = (int)(times / stat.length > 5 ? 10 : times / stat.length * 2);
+        for (int n : stat) if (n > max) max = n;// get the max value
+        int sections = (int)(times / stat.length > 5 ? 10 : times / stat.length * 2);// at most 10 sections
         int interval = max / sections;
         for (int sec = sections - 1; sec >= 0; sec--){
             System.out.printf("\t");

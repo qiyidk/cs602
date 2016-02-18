@@ -180,7 +180,7 @@ public class TicTacToe extends JFrame{
             }
         // if the center is empty, make a move here
         if (board[1][1] == Value.EMPTY) return new int[]{1, 1};
-        //otherwise, return the first empty position
+        // otherwise, return the first empty position
         for(int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++)
                 if (board[i][j] == Value.EMPTY) return new int[]{i , j};

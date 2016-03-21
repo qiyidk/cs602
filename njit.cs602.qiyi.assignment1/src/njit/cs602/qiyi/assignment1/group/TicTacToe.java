@@ -38,7 +38,7 @@ public class TicTacToe extends JFrame{
         this.setSize(500, 500);
         this.getContentPane().setLayout(null);
         this.setTitle("TicTacToe");
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);;
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
         
         //initiate mouse listening

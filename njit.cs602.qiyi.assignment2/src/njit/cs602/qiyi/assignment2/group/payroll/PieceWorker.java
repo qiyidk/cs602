@@ -6,7 +6,7 @@ package njit.cs602.qiyi.assignment2.group.payroll;
  * </p>
  *
  * @author qiyi
- * @version 2016Äê3ÔÂ20ÈÕ
+ * @version 2016-3-20
  */
 public class PieceWorker extends Employee {
     private double wage; // wage per piece

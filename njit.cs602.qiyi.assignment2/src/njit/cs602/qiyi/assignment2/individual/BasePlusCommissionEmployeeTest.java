@@ -1,4 +1,4 @@
-package njit.cs602.qiyi.assignment2.BasePlusCommissionEmployee;
+package njit.cs602.qiyi.assignment2.individual;
 
 // Fig. 9.7: BasePlusCommissionEmployeeTest.java
 // BasePlusCommissionEmployee test program.

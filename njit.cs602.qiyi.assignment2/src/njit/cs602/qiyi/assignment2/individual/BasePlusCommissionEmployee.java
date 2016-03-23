@@ -1,4 +1,4 @@
-package njit.cs602.qiyi.assignment2.BasePlusCommissionEmployee;
+package njit.cs602.qiyi.assignment2.individual;
 
 // Fig. 9.6: BasePlusCommissionEmployee.java
 // BasePlusCommissionEmployee class represents an employee that receives

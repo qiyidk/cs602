@@ -1,5 +1,12 @@
 package njit.cs602.qiyi.assignment3.genericMethod;
-
+/**
+ * <p>
+ * InvalidSubscriptException
+ * </p>
+ *
+ * @author qiyi
+ * @version 2016-4-15
+ */
 public class GenericMethodTest 
 {
    public static void main(String[] args) 

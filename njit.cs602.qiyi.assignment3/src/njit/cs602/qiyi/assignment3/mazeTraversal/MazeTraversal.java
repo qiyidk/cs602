@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class MazeTraversal {
     private LinkedList<int[]> path;
+    private LinkedList<int[]> moves;
     private boolean hasPath;
     private final int[] startPoint;
     private String[][] maze;
@@ -24,7 +25,8 @@ public class MazeTraversal {
         startPoint = start;
         hasPath = false;
         path = new LinkedList<int[]>();
-        hasPath = dfs(this.maze, start, path);
+        moves = new LinkedList<int[]>();
+        hasPath = dfs(this.maze, start, path, moves);
     }
     
     public List<int[]> getPath(){
@@ -32,23 +34,32 @@ public class MazeTraversal {
         else return null;
     }
     
-    private boolean dfs(String[][] maze, int[] start, LinkedList<int[]> path){
+    public List<int[]> getMoves(){
+        if (hasPath) return moves;
+        else return null;
+    }
+    
+    private boolean dfs(String[][] maze, int[] start, LinkedList<int[]> path, LinkedList<int[]> moves){
         path.add(start);
+        moves.add(start);
+        
         int x = start[0];
         int y = start[1];
         maze[x][y] = "#";// represent visited
         if ((x == 0 || x == maze.length - 1 || y == 0 || y == maze[0].length - 1) && !start.equals(startPoint)) hasPath = true;
         if (!hasPath && x != 0 && maze[x - 1][y].equals(".")) 
-            hasPath = dfs(maze, new int[]{x - 1, y}, path);
+            hasPath = dfs(maze, new int[]{x - 1, y}, path, moves);
         if (!hasPath && x != maze.length - 1 && maze[x + 1][y].equals(".")) 
-            hasPath = dfs(maze, new int[]{x + 1, y}, path);
+            hasPath = dfs(maze, new int[]{x + 1, y}, path, moves);
         if (!hasPath && y != 0 && maze[x][y - 1].equals(".")) 
-            hasPath = dfs(maze, new int[]{x, y - 1}, path);
+            hasPath = dfs(maze, new int[]{x, y - 1}, path, moves);
         if (!hasPath && y != maze[0].length - 1 && maze[x][y + 1].equals(".")) 
-            hasPath = dfs(maze, new int[]{x, y + 1}, path);
+            hasPath = dfs(maze, new int[]{x, y + 1}, path, moves);
+        
         if (hasPath) return true;
         else{
             path.removeLast();
+            moves.add(start); // add an extra move to represent backtrack
             return false;
         }
     }

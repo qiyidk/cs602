@@ -46,7 +46,8 @@ public class MazeTraversal {
         int x = start[0];
         int y = start[1];
         maze[x][y] = "#";// represent visited
-        if ((x == 0 || x == maze.length - 1 || y == 0 || y == maze[0].length - 1) && !start.equals(startPoint)) hasPath = true;
+        if ((x == 0 || x == maze.length - 1 || y == 0 || y == maze[0].length - 1) && !start.equals(startPoint)) 
+            hasPath = true;
         if (!hasPath && x != 0 && maze[x - 1][y].equals(".")) 
             hasPath = dfs(maze, new int[]{x - 1, y}, path, moves);
         if (!hasPath && x != maze.length - 1 && maze[x + 1][y].equals(".")) 

@@ -21,7 +21,10 @@ public class Simulator extends JFrame{
     private List<int[]> moves;
     public Simulator(String[][] maze, List<int[]> moves){
         super();
-        this.maze = maze;
+        this.maze = new String[maze.length][maze[0].length];
+        for (int i = 0 ; i < maze.length; i++)
+            for (int j = 0; j < maze[0].length; j++)
+                this.maze[i][j] = maze[i][j];
         this.moves = moves;
         this.setTitle("Maze Traversal");
         this.setSize(400, 400);
@@ -91,7 +94,12 @@ public class Simulator extends JFrame{
         List<int[]> moves = mt.getMoves();
         
         Simulator s = new Simulator(maze, moves);
+        s.play();
         
+        maze[4][11] = "#";
+        mt = new MazeTraversal(maze, new int[]{2, 0});
+        moves = mt.getMoves();
+        s = new Simulator(maze, moves);
         s.play();
     }
 }

@@ -41,7 +41,7 @@ public class GenericMethodTest
    public static <T> void print(String arrayName, T[] inputArray, int lowSubscript, int highSubscript){
        try{
            System.out.println("Array " + arrayName + "(range from index "+ lowSubscript + " to " + highSubscript +") contains:");
-           System.out.println("the number of element:" + printArray(inputArray, lowSubscript, highSubscript)); 
+           System.out.println("the number of elements:" + printArray(inputArray, lowSubscript, highSubscript)); 
            System.out.println();
        }
        catch (InvalidSubscriptException e){

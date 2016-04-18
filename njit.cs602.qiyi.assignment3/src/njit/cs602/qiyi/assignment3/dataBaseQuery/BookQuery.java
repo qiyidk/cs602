@@ -98,7 +98,7 @@ public class BookQuery extends JFrame {
         ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, 
         ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         
-     // set up JButton for submitting queries
+        // set up JButton for submitting queries
         submitButton = new JButton("Submit Query");
         // create event listener for submitButton
         submitButton.addActionListener(        
@@ -108,26 +108,15 @@ public class BookQuery extends JFrame {
                         tableModel.setQuery(queryArea.getText());
                     }
                 catch (SQLException sqlException){
+                    try{
+                        tableModel.setQuery("select 'NO RESULT' from dual where 1 = 2");
+                    }
+                    catch(SQLException sqlException2){
+                        sqlException2.printStackTrace();
+                    }
                     JOptionPane.showMessageDialog(null, 
                        sqlException.getMessage(), "Database error", 
                        JOptionPane.ERROR_MESSAGE);
-                    
-                    // try to recover from invalid user query by executing default query
-                    try 
-                    {
-                         tableModel.setQuery(DEFAULT_QUERY);
-                         queryArea.setText(DEFAULT_QUERY);
-                    } 
-                    catch (SQLException sqlException2) 
-                    {
-                        JOptionPane.showMessageDialog(null, 
-                        sqlException2.getMessage(), "Database error", 
-                        JOptionPane.ERROR_MESSAGE);
-        
-                    // ensure database connection is closed
-                    tableModel.close();
-                    System.exit(1); // terminate application
-                    }                 
                  } 
               } 
            });  
@@ -155,7 +144,7 @@ public class BookQuery extends JFrame {
                     
                     try{
                         String selectDataBase = "USE " + SystemPara.database;
-                        String author = "Select CONCAT(lastName,' ',firstName) from authors order by lastName, firstName";
+                        String author = "Select CONCAT(firstName,' ',lastName) from authors order by lastName, firstName";
                         String book = "Select title from titles order by title";
                         String sql = index == 1? author : book;
                         cn = new DataBaseConnection().connection;
@@ -163,8 +152,8 @@ public class BookQuery extends JFrame {
                         stat.execute(selectDataBase);
                         rs = stat.executeQuery(sql);
                         jc2.removeAllItems();
-                        String v1 = "ALL BOOKS";
-                        String v2 = "ALL AUTHORS";
+                        String v1 = "SHOW ALL BOOKS";
+                        String v2 = "SHOW ALL AUTHORS";
                         jc2.addItem(index == 1? v1 : v2);
                         while(rs.next()) {
                             jc2.addItem(rs.getString(1));
@@ -176,10 +165,6 @@ public class BookQuery extends JFrame {
                         JOptionPane.showMessageDialog(null, 
                         sqlException2.getMessage(), "Database error", 
                         JOptionPane.ERROR_MESSAGE);
-        
-                        // ensure database connection is closed
-                        tableModel.close();
-                        System.exit(1); // terminate application
                     }
                     finally{
                         try{
@@ -213,8 +198,8 @@ public class BookQuery extends JFrame {
                     if (jc2.getSelectedIndex() != 0){
                         if (index == 1){
                             String[] names = ((String)jc2.getSelectedItem()).split(" ");
-                            String lname = names[0];
-                            String fname = names[1];
+                            String fname = names[0];
+                            String lname = names[1];
                             if (jc2.getSelectedIndex() != 0) sql2 = sql2 + " and lastName = '" + lname + "' and firstName = '" + fname + "' order by lastName, firstName"; 
                             }
                         else  sql2 = sql2 + " and title = '" + (String)jc2.getSelectedItem() + "' order by lastName, firstName"; 

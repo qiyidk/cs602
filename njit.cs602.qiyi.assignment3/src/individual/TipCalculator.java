@@ -16,7 +16,6 @@ public class TipCalculator extends Application
    public void start(Stage stage) throws Exception 
    {
       Parent root = FXMLLoader.load(getClass().getResource("TipCalculator.fxml"));
-
       Scene scene = new Scene(root); // attach scene graph to scene
       stage.setTitle("Tip Calculator"); // displayed in window's title bar
       stage.setScene(scene); // attach scene to stage

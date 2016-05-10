@@ -166,7 +166,6 @@ public class MenuFrame extends JFrame
                break;
             } 
          } 
-
          // process font selection
          for (int count = 0; count < fonts.length; count++)
          {
@@ -176,7 +175,6 @@ public class MenuFrame extends JFrame
                   new Font(fonts[count].getText(), style, 72));
             }
          }
-
          repaint(); // redraw application
       } 
    } // end class ItemHandler
@@ -190,7 +188,6 @@ public class MenuFrame extends JFrame
       {
          String name = displayJLabel.getFont().getName(); // current Font
          Font font; // new font based on user selections
-
          // determine which CheckBoxes are checked and create Font
          if (styleItems[0].isSelected() && 
               styleItems[1].isSelected())
